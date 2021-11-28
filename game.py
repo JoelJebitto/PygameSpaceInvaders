@@ -33,11 +33,16 @@ class Game(object):
         color_map = {
             "RED": (RedSpaceShip, RedLaser),
             "GREEN": (GreenSpaceShip, GreenLaser),
-            "BLue": (BlueSpaceShip, BlueLaser)
+            "BLUE": (BlueSpaceShip, BlueLaser)
         }
 
         def __init__(self, x, y, color, health=100):
             super().__init__(x, y, health)
+            self.ship_img, self.laser_img = self.color_map[color]
+            self.mask= pygame.mask.from_surface(self.ship_img)
+
+        def move(self, vel):
+            self.y += vel
 
     def __init__(self):
         global RedSpaceShip, BlueSpaceShip, YellowSpaceShip, GreenSpaceShip, RedLaser, GreenLaser, BlueLaser, YellowLaser
