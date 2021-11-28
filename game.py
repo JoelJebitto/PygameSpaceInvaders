@@ -30,9 +30,14 @@ class Game(object):
             self.max_health = health
 
     class Enemy(Ship):
+        color_map = {
+            "RED": (RedSpaceShip, RedLaser),
+            "GREEN": (GreenSpaceShip, GreenLaser),
+            "BLue": (BlueSpaceShip, BlueLaser)
+        }
+
         def __init__(self, x, y, color, health=100):
             super().__init__(x, y, health)
-
 
     def __init__(self):
         global RedSpaceShip, BlueSpaceShip, YellowSpaceShip, GreenSpaceShip, RedLaser, GreenLaser, BlueLaser, YellowLaser
